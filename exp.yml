@@ -1,0 +1,44 @@
+model_params:
+  model: SimpleNet
+
+stages:
+  state_params:
+    main_metric: loss
+    minimize_metric: True
+
+  data_params:
+    num_workers: 4
+    batch_size: 64
+
+  criterion_params:
+    criterion: CrossEntropyLoss
+
+  callbacks_params:
+
+    data:
+      callback: DoSomethingWithDataCallback
+
+    loss:
+      callback: CriterionCallback
+
+    optim:
+      callback: OptimizerCallback
+
+    saver:
+      callback: CheckpointCallback
+
+  stage1:
+    state_params:
+      num_epochs: 10
+
+    optimizer_params:
+      optimizer: RAdam
+      lr: 0.001
+
+  stage2:
+    state_params:
+      num_epochs: 10
+
+    optimizer_params:
+      optimizer: RAdam
+      lr: 0.0001

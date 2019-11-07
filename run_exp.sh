@@ -1,0 +1,1 @@
+catalyst-dl run --expdir src --config exp.yml --logdir logs --verbose
