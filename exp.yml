@@ -23,6 +23,9 @@ stages:
 
     optim:
       callback: OptimizerCallback
+      grad_clip_params:
+        func: clip_grad_norm
+        max_norm: 1
 
     saver:
       callback: CheckpointCallback
